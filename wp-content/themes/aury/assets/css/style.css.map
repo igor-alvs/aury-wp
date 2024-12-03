@@ -1,0 +1,6 @@
+{
+"version": 3,
+"sources": ["../sass/_general.scss","../sass/_utilities.scss","../sass/_header.scss","../sass/_page.scss","../sass/_footer.scss","../sass/_thirdparty.scss","../sass/_mediaqueries.scss"],
+"names": [],
+"file": "style.css"
+}

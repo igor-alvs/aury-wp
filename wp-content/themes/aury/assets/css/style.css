@@ -1,0 +1,972 @@
+/* ==========================================================================
+   Table of Contents
+   ========================================================================== */
+/*
+
+    1. Font Face
+    2. General
+    3. Utilities
+    4. Header
+    5. Page Content
+    6. Footer
+    7. Third Party Elements
+    8. Media Queries
+
+ */
+/* $variable: #b4b4c4; */
+/* ==========================================================================
+   1. Font Face - Sets up the website fonts
+   ========================================================================== */
+/*
+
+@font-face {
+  font-family: 'FontFamilyName';
+  src: url('../../fonts/fontFolder/fontfile.eot');
+  src: url('../../fonts/fontFolder/fontfile.eot') format('embedded-opentype'),
+       url('../../fonts/fontFolder/fontfile.woff2') format('woff2'),
+       url('../../fonts/fontFolder/fontfile.woff') format('woff'),
+       url('../../fonts/fontFolder/fontfile.ttf') format('truetype'),
+       url('../../fonts/fontFolder/fontfile.svg#FontFamilyName') format('svg');
+}
+
+*/
+
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('../../fonts/Nexa Bold.eot');
+  src: url('../../fonts/Nexa Bold.eot') format('embedded-opentype'),
+    url('../../fonts/Nexa Bold.woff2') format('woff2'),
+    url('../../fonts/Nexa Bold.woff') format('woff'),
+    url('../../fonts/Nexa Bold.otf') format('opentype'),
+    url('../../fonts/Nexa Bold.svg#NexaBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa Light';
+  src: url('../../fonts/Nexa Light.eot');
+  src: url('../../fonts/Nexa Light.eot') format('embedded-opentype'),
+    url('../../fonts/Nexa Light.woff2') format('woff2'),
+    url('../../fonts/Nexa Light.woff') format('woff'),
+    url('../../fonts/Nexa Light.otf') format('opentype'),
+    url('../../fonts/Nexa Light.svg#NexaLight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Nexa Regular';
+  src: url('../../fonts/Nexa Regular.eot');
+  src: url('../../fonts/Nexa Regular.eot') format('embedded-opentype'),
+    url('../../fonts/Nexa Regular.woff2') format('woff2'),
+    url('../../fonts/Nexa Regular.woff') format('woff'),
+    url('../../fonts/Nexa Regular.otf') format('opentype'),
+    url('../../fonts/Nexa Regular.svg#NexaRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ==========================================================================
+   2. General - Setting up some base styles
+   ========================================================================== */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Nexa Regular';
+  transition: background-color 0.2s ease;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Para garantir que o elemento não interfira nos eventos do mouse */
+  background: radial-gradient(circle 20px at var(--x) var(--y), rgba(0, 0, 0, 0.1), transparent 80%);
+  transition: background 0.2s ease;
+}
+
+#wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin: 0;
+}
+
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ol ol,
+ul ul,
+ul ol,
+ol ul {
+  margin: 0.4em 0;
+}
+
+a:hover,
+a:focus,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a[href],
+input[type="submit"],
+input[type="image"],
+label[for],
+select,
+button {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+input[type="text"],
+textarea {
+  display: inline-block;
+}
+
+.section {
+  margin-top: 60px;
+}
+
+/* .loading {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 99999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: black;
+  color: white;
+} */
+
+/* ==========================================================================
+   3. Utilities - These things get used a lot
+   ========================================================================== */
+.clear-fix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ccc;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.nopadding {
+  padding: 0;
+}
+
+.mobile,
+.tablet {
+  display: none;
+}
+
+.nomobile,
+.notablet {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .tablet {
+    display: block;
+  }
+
+  .notablet {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+
+  .nomobile {
+    display: none;
+  }
+}
+
+.thumb .thumb-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;
+}
+
+.thumb img {
+  display: none;
+}
+
+.the-content>* {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.the-content>*+* {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.the-content .alignleft {
+  float: left;
+  margin-right: 2em;
+}
+
+.the-content .alignright {
+  float: right;
+  margin-left: 2em;
+}
+
+.the-content .aligncenter {
+  clear: both;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   4. Header - The top of every page
+   ========================================================================== */
+/* MENU - TEMPLATE SHIT */
+.navbar-brand a img,
+.navbar-brand a svg {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-brand .mobile a {
+  line-height: 50px;
+}
+
+.navbar-collapse {
+  float: right;
+}
+
+.navbar-collapse li {
+  float: left;
+}
+
+.navbar-collapse a {
+  display: block;
+  padding: 0 20px;
+  line-height: 60px;
+}
+
+.primary-menu:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#menu {
+  padding: 20px 0;
+}
+
+/* MENU - CUSTOM */
+#header {
+  position: relative;
+  z-index: 999;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   5. Page Content - When you click on an individual page
+   ========================================================================== */
+.page-404 h1 {
+  font-size: 114px;
+  font-weight: bold;
+}
+
+.page-404 a {
+  font-size: 16px;
+  color: #888;
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+  margin-top: 15px;
+  display: inline-block;
+  transition: 300ms all ease-in-out;
+}
+
+.page-404 a:hover {
+  background-color: black;
+  color: white;
+}
+
+.page-404 .the-content {
+  font-size: 24px;
+  font-weight: 600;
+  color: #aaa;
+}
+
+.page-404 .the-content {
+  font-size: 24px;
+  font-weight: 600;
+  color: #9f9f9f;
+}
+
+.page-404 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* BLOG ROLL - CUSTOM SHIT */
+.post-excerpt {
+  height: 200px;
+}
+
+/* PAGE & SINGLE - TEMPLATE SHIT */
+.page-header {
+  margin-bottom: 30px;
+}
+
+.the-content p+p {
+  margin-top: 15px;
+}
+
+.page-container {
+  padding: 30px 0;
+}
+
+.the-categories li {
+  display: inline-block;
+}
+
+.the-categories li+li:before {
+  content: ",";
+  position: relative;
+  display: inline-block;
+  margin-right: 4px;
+  left: -2px;
+}
+
+.share-this li {
+  display: inline-block;
+}
+
+/* GALERIAS - TEMPLATE SHIT */
+.galerias-content {
+  margin-top: -30px;
+}
+
+.galerias-element {
+  margin-top: 30px;
+}
+
+.galerias-element .thumb-img {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+/* CONTATO - TEMPLATE SHIT */
+.contato-container {
+  margin-top: -30px;
+}
+
+.contato-container .lince-input {
+  margin-top: 30px;
+}
+
+.contato-container br {
+  display: none;
+}
+
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  outline: none;
+  border: none;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 3px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+input[type="submit"] {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: #66cc33;
+  color: white;
+  padding: 10px;
+}
+
+label.error {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 10px;
+  color: red;
+}
+
+.lince-input .label-file {
+  background: #b4b4c4;
+  padding: 10px;
+  cursor: pointer;
+  width: 30%;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+}
+
+input[type="text"].file-archive {
+  width: 70%;
+}
+
+.alertify-button {
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #66cc33 !important;
+  text-shadow: none !important;
+  margin-top: 20px;
+}
+
+/*Contact Form 7 Fixes*/
+.lince-input .wpcf7-form-control-wrap {
+  display: block;
+}
+
+/*Galeria Wordpress*/
+p+.gallery,
+ul+.gallery,
+.gallery+p,
+.gallery+ul,
+.gallery+.gallery {
+  margin-top: 30px;
+}
+
+.gallery {
+  margin: 0;
+  top: -20px;
+  position: relative;
+  /*    padding: 30px 20px;
+      background: rgba(0,0,0,20/100);*/
+}
+
+.gallery-item {
+  display: inline-block;
+  max-width: 33.33%;
+  padding: 0 1.1400652% 2.2801304%;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+  margin: 0;
+  padding: 0 1.1400652% 0;
+  margin-top: 20px;
+}
+
+.gallery-icon {
+  height: 200px;
+}
+
+button[type="button"] {
+  background: linear-gradient(90deg, rgba(144, 201, 93, 1) 0%, rgba(53, 182, 105, 1) 100%);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+nav.navbar {
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.navbar .collapse .menu-item a {
+  color: #000000;
+  font-size: 16px;
+  transition: 150ms all ease-in-out;
+}
+
+section.topo {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(250, 237, 254, 1) 100%);
+  position: relative;
+  min-height: 670px;
+}
+
+section.topo img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-bottom-left-radius: 90px;
+}
+
+section.topo h1 {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 56px;
+  color: #6A3B8A;
+}
+
+section.cards .card {
+  width: 100%;
+  border-radius: 16px;
+  top: -60px;
+}
+
+section.cards .card#first {
+  background: #FBEEFF;
+}
+
+section.cards .card#second {
+  background: #FFFFEC;
+}
+
+section.cards .card#third {
+  background: #F9F8FF;
+}
+
+section.cards .card h3 {
+  font-size: 24px;
+  font-family: 'Nexa Bold';
+  color: #6A3B8A;
+}
+
+section.cards .card p {
+  font-size: 18px;
+  font-family: 'Nexa Regular';
+  color: #000000;
+  margin-top: 16px;
+}
+
+section h2 {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 40px;
+  color: #6A3B8A;
+}
+
+section h3 {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 24px;
+  color: #6A3B8A;
+}
+
+section p {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 9px;
+  line-height: 24px;
+}
+
+section.funciona h2 {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 40px;
+  color: #6A3B8A;
+}
+
+section.funciona h3 {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 24px;
+  color: #6A3B8A;
+}
+
+section.funciona p {
+  font-family: 'Nexa Regular', sans-serif;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 9px;
+  line-height: 24px;
+}
+
+section.funciona hr {
+  margin: 1rem 0;
+  color: inherit;
+  border: 1px solid #6A3B8A;
+  opacity: 1;
+}
+
+section.beneficios .tabs .tab {
+  border: 1px solid #F5F5F5;
+  -webkit-box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+}
+
+section.beneficios .tabs .tab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #6A3B8A;
+  border-radius: 4px 8px 8px 4px;
+  width: 20px;
+  height: 100%;
+}
+
+section.cta {
+  background-color: #FFFFEC;
+  padding: 5rem 0;
+}
+
+section.cta .cta-final {
+  justify-items: center;
+}
+
+section.plano .plano-item img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+section.plano .plano-item .box-plano {
+  background-color: #FBEEFF;
+  border-radius: 0 0 12px 12px;
+  min-height: 96px;
+}
+
+section#colaboradores h2 {
+  font-size: 56px;
+}
+
+section.empresa {
+  background-color: #6A3B8A;
+}
+
+section.empresa h2 {
+  color: #fff;
+  font-size: 40px;
+}
+
+section.empresa h3 {
+  color: #fff;
+  font-size: 24px;
+}
+
+section.empresa .item-empresa img {
+  width: max-content;
+}
+
+section.empresa .item-empresa {
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  background-color: #7C4A9D;
+}
+
+section img {
+  max-width: 100%;
+}
+
+section.faq {
+  background-color: #FBEEFF;
+}
+
+section.faq h2 {
+  font-size: 40px;
+  color: #6A3B8A;
+  padding: 2rem 0;
+}
+
+section.faq .accordion-button:focus {
+  box-shadow: none !important;
+  ;
+}
+
+section.faq .accordion .accordion-item {
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+}
+
+section.faq .accordion .accordion-item h3 {
+  font-size: 24px;
+  color: #6A3B8A;
+  background-color: #fff;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+section.faq .accordion .accordion-item h3 .accordion-button {
+  font-size: 24px;
+  color: #6A3B8A;
+  background-color: #fff;
+}
+
+section.faq .accordion .accordion-body p {
+  font-size: 18px;
+  color: #000;
+}
+
+.navbar button.navbar-toggler {
+  background: transparent;
+}
+
+section.footer p {
+  font-size: 12px;
+}
+
+section.footer p a {
+  text-decoration: underline !important;
+  color: #6A3B8A !important;
+}
+
+/* ==========================================================================
+   6. Footer - The bottom of every page
+   ========================================================================== */
+
+/* ==========================================================================
+   7. Third Party Elements - Embeds from other services
+   ========================================================================== */
+/* Wordpress Fixes with Wrapper */
+body.admin-bar {
+  padding-bottom: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar {
+    padding-bottom: 46px !important;
+  }
+}
+
+/* Facebook Comments */
+.facebook-cmt .fb-comments,
+.facebook-cmt .fb-comments span,
+.facebook-cmt .fb-comments iframe {
+  width: 100% !important;
+}
+
+/*Wordpress Default  Things*/
+.gallery-columns-1 .gallery-item {
+  max-width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+
+.gallery-icon img {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-caption {
+  color: #686868;
+  display: block;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-style: italic;
+  line-height: 1.6153846154;
+  padding-top: 0.5384615385em;
+}
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
+  display: none;
+}
+
+/* ==========================================================================
+   8. Media Queries -
+   ========================================================================== */
+@media (min-width: 993px) and (max-width: 1400px) {
+  section.topo img {
+    width: 50%;
+    min-height: 480px;
+    object-fit: cover;
+  }
+  .navbar .collapse .menu-item a {
+    font-size: 14px;
+  }
+  .navbar.collapse.menu-item button[type="button"] {
+    padding: 9px 26px;
+  }
+  section.topo h1 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  /* PAGE & SINGLE - TEMPLATE SHIT */
+  .post+.post {
+    margin-top: 30px;
+  }
+
+  /*DISPLAY SHIT*/
+  .tablet {
+    display: block;
+  }
+
+  .slider-container .cycle-slideshow {
+    height: auto;
+  }
+
+  .slider-container .display-container {
+    display: block;
+  }
+
+  .slider-container .display-container .txt {
+    position: absolute;
+    top: 40%;
+    z-index: 999;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .slider-container .display-next,
+  .slider-container .display-prev {
+    display: none;
+  }
+
+  section.topo img {
+    position: relative;
+  }
+  section.topo h1 {
+    font-size: 42px;
+  }
+  section.cards .card {
+    top: 20px;
+  }
+  section button[type="button"] {
+    width: 100%;
+  }
+  button#header {
+    width: 100%;
+    font-size: 24px;
+  }
+  section.cta .cta-final {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar ul#menu-nohome {
+    text-align: center;
+  }
+  .navbar .collapse .menu-item a {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* MENU - TEMPLATE SHIT */
+  #menu {
+    padding: 0;
+  }
+
+  .navbar-collapse li {
+    float: none;
+  }
+
+  .navbar-collapse a {
+    padding: 0;
+    line-height: 45px;
+  }
+
+  /* Sub Menu Things */
+  .navbar-collapse .sub-menu {
+    max-height: 0px !important;
+    padding: 0 0 0 20px;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 1s ease;
+  }
+
+  .navbar-collapse .menu-item-has-children.opened .sub-menu {
+    max-height: 200px !important;
+    opacity: 1;
+  }
+
+  /* CONTATO - TEMPLATE SHIT */
+  .label-file span {
+    display: none;
+  }
+
+  /*GALLERY WP SHIT*/
+  .gallery-item {
+    width: 100%;
+    max-width: 100% !important;
+  }
+}

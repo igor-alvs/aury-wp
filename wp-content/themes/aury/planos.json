@@ -1,0 +1,54 @@
+{
+    "UNIMED": {
+        "Compacto": {
+            "De 0 a 18 anos": 425.00,
+            "De 19 a 23 anos": 520.21,
+            "De 24 a 28 anos": 651.36,
+            "De 29 a 33 anos": 719.79,
+            "De 34 a 38 anos": 766.66,
+            "De 39 a 43 anos": 889.32,
+            "De 44 a 48 anos": 1063.10,
+            "De 49 a 53 anos": 1275.01,
+            "De 54 a 58 anos": 1513.74,
+            "59 anos ou mais": 2550.02
+        },
+        "Efetivo": {
+            "De 0 a 18 anos": 476.98,
+            "De 19 a 23 anos": 583.82,
+            "De 24 a 28 anos": 731.03,
+            "De 29 a 33 anos": 807.83,
+            "De 34 a 38 anos": 860.43,
+            "De 39 a 43 anos": 998.08,
+            "De 44 a 48 anos": 1193.12,
+            "De 49 a 53 anos": 1430.94,
+            "De 54 a 58 anos": 1698.87,
+            "59 anos ou mais": 2861.90
+        }
+    },
+    "AMIL": {
+        "Essencial": {
+            "De 0 a 18 anos": 300.00,
+            "De 19 a 23 anos": 350.00,
+            "De 24 a 28 anos": 450.00,
+            "De 29 a 33 anos": 500.00,
+            "De 34 a 38 anos": 550.00,
+            "De 39 a 43 anos": 650.00,
+            "De 44 a 48 anos": 800.00,
+            "De 49 a 53 anos": 1000.00,
+            "De 54 a 58 anos": 1200.00,
+            "59 anos ou mais": 2000.00
+        },
+        "Premium": {
+            "De 0 a 18 anos": 400.00,
+            "De 19 a 23 anos": 450.00,
+            "De 24 a 28 anos": 550.00,
+            "De 29 a 33 anos": 600.00,
+            "De 34 a 38 anos": 650.00,
+            "De 39 a 43 anos": 800.00,
+            "De 44 a 48 anos": 1000.00,
+            "De 49 a 53 anos": 1250.00,
+            "De 54 a 58 anos": 1500.00,
+            "59 anos ou mais": 2500.00
+        }
+    }
+}
